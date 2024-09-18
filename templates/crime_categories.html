@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Crime Categories</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+        <h2 class="text-xl font-semibold mb-2">Average Rape Cases</h2>
+        <div id="rape-cases-chart"></div>
+    </div>
+    <div>
+        <h2 class="text-xl font-semibold mb-2">Other Crimes</h2>
+        <div id="other-crimes-chart"></div>
+    </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var rapeCasesData = {{ rape_cases_data | safe }};
+    Plotly.newPlot('rape-cases-chart', rapeCasesData);
+
+    var otherCrimesData = {{ other_crimes_data | safe }};
+    Plotly.newPlot('other-crimes-chart', otherCrimesData);
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Crime Distribution by State</h1>
+
+<div class="w-full">
+    <div id="average-cases-chart"></div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var averageCasesData = {{ average_cases_data | safe }};
+    Plotly.newPlot('average-cases-chart', averageCasesData);
+</script>
+{% endblock %}

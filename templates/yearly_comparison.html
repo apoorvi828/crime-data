@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Yearly Crime Comparison</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+        <h2 class="text-xl font-semibold mb-2">Highest Rape Cases Each Year</h2>
+        <div id="highest-rape-cases-chart"></div>
+    </div>
+    <div>
+        <h2 class="text-xl font-semibold mb-2">Lowest Rape Cases Each Year</h2>
+        <div id="lowest-rape-cases-chart"></div>
+    </div>
+    <div>
+        <h2 class="text-xl font-semibold mb-2">Highest vs Lowest Other Crimes</h2>
+        <div id="highest-lowest-other-crimes-chart"></div>
+    </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var highestRapeCasesData = {{ highest_rape_cases_data | safe }};
+    Plotly.newPlot('highest-rape-cases-chart', highestRapeCasesData);
+
+    var lowestRapeCasesData = {{ lowest_rape_cases_data | safe }};
+    Plotly.newPlot('lowest-rape-cases-chart', lowestRapeCasesData);
+
+    var highestLowestOtherCrimesData = {{ highest_lowest_other_crimes_data | safe }};
+    Plotly.newPlot('highest-lowest-other-crimes-chart', highestLowestOtherCrimesData);
+</script>
+{% endblock %}
