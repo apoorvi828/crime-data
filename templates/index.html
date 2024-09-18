@@ -17,9 +17,17 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
     var growthRateData = {{ growth_rate_data | safe }};
-    Plotly.newPlot('growth-rate-chart', growthRateData);
+    Plotly.newPlot('growth-rate-chart', growthRateData, {
+        title: 'Annual Growth Rate by Crime',
+        xaxis: { title: 'Year' },
+        yaxis: { title: 'Growth Rate (%)' },
+    });
 
     var totalCasesData = {{ total_cases_data | safe }};
-    Plotly.newPlot('total-cases-chart', totalCasesData);
+    Plotly.newPlot('total-cases-chart', totalCasesData, {
+        title: 'Total Crime Cases per Year',
+        xaxis: { title: 'Year' },
+        yaxis: { title: 'Total Cases' },
+    });
 </script>
 {% endblock %}

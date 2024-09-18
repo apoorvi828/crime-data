@@ -10,6 +10,9 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
     var averageCasesData = {{ average_cases_data | safe }};
-    Plotly.newPlot('average-cases-chart', averageCasesData);
+    Plotly.newPlot('average-cases-chart', averageCasesData, {
+        title: 'Average Crime Cases by State',
+        showlegend: true,
+    });
 </script>
 {% endblock %}
