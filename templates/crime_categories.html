@@ -8,18 +8,15 @@
         <h2 class="text-xl font-semibold mb-2">Average Rape Cases</h2>
         <div id="rape-cases-chart"></div>
     </div>
-    <div>
-        <h2 class="text-xl font-semibold mb-2">Other Crimes</h2>
-        <div id="other-crimes-chart"></div>
-    </div>
 </div>
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
     var rapeCasesData = {{ rape_cases_data | safe }};
-    Plotly.newPlot('rape-cases-chart', rapeCasesData);
-
-    var otherCrimesData = {{ other_crimes_data | safe }};
-    Plotly.newPlot('other-crimes-chart', otherCrimesData);
+    Plotly.newPlot('rape-cases-chart', rapeCasesData, {
+        title: 'Average Rape Cases Over the Years',
+        xaxis: { title: 'Year' },
+        yaxis: { title: 'Average Rape Cases' },
+    });
 </script>
 {% endblock %}
