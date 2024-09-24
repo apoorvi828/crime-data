@@ -60,6 +60,12 @@ def home():
     total_cases_data = get_total_cases_data()
     return render_template('index.html', growth_rate_data=growth_rate_data, total_cases_data=total_cases_data)
 
+@app.route('/overview')
+def overview():
+    growth_rate_data = get_growth_rate_data()
+    total_cases_data = get_total_cases_data()
+    return render_template('overview.html', growth_rate_data=growth_rate_data, total_cases_data=total_cases_data)
+
 # Route for Crime Distribution Page
 @app.route('/crime-distribution')
 def crime_distribution():
